@@ -5,14 +5,13 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>迷途</title>
+  <title>迷 途</title>
   <meta name="author" content="crab nebula">
 
   
-  <meta name="description" content="很早就被开源吸引，现在还喜欢看着开源代码编译时在屏幕上高速的滚动。
-GNU Autotools自动化构建工具集断断续续学习了几次，最近一次才找到一
-些感觉，觉得算是入了门。就从hello，world自动生成Makefile开始说起,
-该hello 项目参考AutoMake官方手册。 &hellip;">
+  <meta name="description" content="GNU Autotools断断续续学习了几次，最近一次才找到一 些感觉，觉得算是入了门。
+就从hello world自动生成Makefile开始说起, 参考AutoMake官方手册。 1. hello项目文件 hello.c 源文件 #include &lt;stdio.h&gt;
+# &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -24,7 +23,7 @@ GNU Autotools自动化构建工具集断断续续学习了几次，最近一次�
   <link rel="canonical" href="http://crabnebula.github.io">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="迷途" type="application/atom+xml">
+  <link href="/atom.xml" rel="alternate" title="迷 途" type="application/atom+xml">
   <script src="/javascripts/modernizr-2.0.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
@@ -39,7 +38,7 @@ GNU Autotools自动化构建工具集断断续续学习了几次，最近一次�
 
 <body   >
   <header role="banner"><hgroup>
-  <h1><a href="/">迷途</a></h1>
+  <h1><a href="/">迷 途</a></h1>
   
     <h2>易逝的时光，不老的容颜</h2>
   
@@ -74,7 +73,7 @@ GNU Autotools自动化构建工具集断断续续学习了几次，最近一次�
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2013/07/29/a-simple-hello-world-using-autotools/">A Simple Hello World Using Autotools</a></h1>
+      <h1 class="entry-title"><a href="/blog/2013/07/29/hello-world-using-autotools/">Hello World Using Autotools</a></h1>
     
     
       <p class="meta">
@@ -97,43 +96,31 @@ GNU Autotools自动化构建工具集断断续续学习了几次，最近一次�
   </header>
 
 
-  <div class="entry-content"><p>很早就被开源吸引，现在还喜欢看着开源代码编译时在屏幕上高速的滚动。
-GNU Autotools自动化构建工具集断断续续学习了几次，最近一次才找到一
-些感觉，觉得算是入了门。就从hello，world自动生成Makefile开始说起,
-该hello  项目参考AutoMake官方手册。</p>
+  <div class="entry-content"><p>GNU Autotools断断续续学习了几次，最近一次才找到一 些感觉，觉得算是入了门。
+就从hello world自动生成Makefile开始说起, 参考AutoMake官方手册。</p>
 
-<ol>
-<li><p>hello项目文件组成</p>
+<h3>1. hello项目文件</h3>
 
-<pre><code> hello.c 源文件
- configure.ac Autoconf 配置文件
- Makefile.am Automake 配置文件
- autogen.sh 生成configure配置脚本的执行脚本
-</code></pre></li>
-<li><p>hello项目文件内容</p></li>
-</ol>
+<p>hello.c  源文件</p>
 
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;config.h&gt;
 
-<p>hello.c</p>
-
-<pre><code>    #include &lt;stdio.h&gt;  
-    #include &lt;config.h&gt;
-
-    int main(int argc, char *argv[])
-    {
-        puts("hello, autotools");
-        puts("this is " PACKAGE_STRING ".");
-        return 0;
-    }
+int main(int argc, char *argv[])
+{
+    puts("hello, autotools");
+    puts("this is " PACKAGE_STRING ".");
+    return 0;
+}
 </code></pre>
 
-<p>Makefile.am</p>
+<p>Makefile.am Automake 配置指令文件</p>
 
 <pre><code>noinst_PROGRAMS=hello
 hello_SOURCES=hello.c
 </code></pre>
 
-<p>configure.ac</p>
+<p>configure.ac Autoconf 配置指令文件</p>
 
 <pre><code>AC_PREREQ([2.69])
 AC_INIT([hello], [2.0], [email])
@@ -150,7 +137,7 @@ AC_CONFIG_FILES([
 AC_OUTPUT
 </code></pre>
 
-<p>autogen.sh</p>
+<p>autogen.sh configure和Makefile自动生成脚本</p>
 
 <pre><code>#!/bin/bash
 test -n "$srcdir" || $srcdir=`dirname "$0"`
@@ -162,20 +149,25 @@ test -n "$srcdir" || $srcdir=.
 test -n "$NOCONFIGURE" || "$srcdir/configure" "$@"
 </code></pre>
 
-<ol>
-<li>Autoconf配置文件configure.ac解析</li>
-</ol>
+<h3>3. configure.ac解析</h3>
 
+<p>configure.ac使用M4宏指令，被Autoconf和Automake读取，Autoconf读取以AC_开始的宏
+Automake读取以AM_开头的宏<br/>
+AC_PREREQ 设置Autoconf所需最小版本<br/>
+AC_INIT 设置软件包名字，版本和bug报告地址, 在config.h生成宏定义中<br/>
+AM_INIT_AUTOMAKE 初始化Automake选项，-Wall -Werror与编译器编译选项相同，但与编译器无关。它们告诉
+Automake在执行时打开警告并将警告当作错误处理<br/>
+AC_CONFIG_SRCDIR 检查源文件是否存在<br/>
+AC_PROG_CC 检查编译器，设置CC变量<br/>
+AC_CONFIG_HEADERS 生成配置头文件<br/>
+AC_CONFIG_FILES 生成的Makefile列表，添加子目录时，要添加相应目标Makefile文件<br/>
+AC_OUTPUT 执行文件生成操作</p>
 
-<p>AC_PREREQ([]) 设置autoconf最低版本需求<br/>
-AC_INIT([package name], [package version], [bug report])<br/>
-AC_INIT_AUTOMAKE([-Wall -Werror foreign])<br/>
-初始化Automake, -Wall -Werror与编译器编译选项相同，但与编译器无关，它们是Automake选项。</p>
+<h3>4. Automake配置文件Makefile.am解析</h3>
 
-<ol>
-<li>Automake配置文件Makefile.am解析</li>
-</ol>
-
+<p>noinst_PROGRAMS 定义不必安装的目标程序列表<br/>
+bin_PROGRAMS 定义安装的bin目录下的目标程序列表<br/>
+hello_SOURCES 定义生成hello目标程序所需的源文件</p>
 </div>
   
   
@@ -196,13 +188,22 @@ AC_INIT_AUTOMAKE([-Wall -Werror foreign])<br/>
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2013/07/29/a-simple-hello-world-using-autotools/">A Simple Hello World Using Autotools</a>
+        <a href="/blog/2013/07/29/hello-world-using-autotools/">Hello World Using Autotools</a>
       </li>
     
   </ul>
 </section>
 
 
+
+<section class="googleplus">
+  <h1>
+    <a href="https://plus.google.com/liujia6264?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
 
 
 
