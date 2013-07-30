@@ -3,7 +3,7 @@
 # ----------------------- #
 
 url: http://crabnebula.github.io
-title: 迷途
+title: 迷 途
 subtitle: 易逝的时光，不老的容颜
 author: crab nebula
 simple_search: http://google.com/search
@@ -34,11 +34,11 @@ plugins: plugins
 code_dir: downloads/code
 category_dir: blog/categories
 markdown: rdiscount
-# rdiscount:
-#  extensions:
-#    - autolink
-#    - footnotes
-#    - smart
+rdiscount:
+  extensions:
+    - autolink
+    - footnotes
+    - smart
 pygments: false # default python pygments have been replaced by pygments.rb
 
 paginate: 10          # Posts per page on the blog index
@@ -78,7 +78,7 @@ google_plus_one_size: medium
 
 # Google Plus Profile
 # Hidden: No visible button, just add author information to search results
-googleplus_user:
+googleplus_user: liujia6264
 googleplus_hidden: false
 
 # Pinboard
