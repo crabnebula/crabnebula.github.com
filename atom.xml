@@ -4,7 +4,7 @@
   <title><![CDATA[迷 途]]></title>
   <link href="http://crabnebula.github.io/atom.xml" rel="self"/>
   <link href="http://crabnebula.github.io/"/>
-  <updated>2013-07-30T22:20:14+08:00</updated>
+  <updated>2013-07-30T22:22:25+08:00</updated>
   <id>http://crabnebula.github.io/</id>
   <author>
     <name><![CDATA[crab nebula]]></name>
@@ -21,7 +21,7 @@
     <content type="html"><![CDATA[<p>GNU Autotools断断续续学习了几次，最近一次才找到一 些感觉，觉得算是入了门。
 就从hello world自动生成Makefile开始说起, 参考AutoMake官方手册。</p>
 
-<h3>1. hello项目文件</h3>
+<h3>hello项目文件</h3>
 
 <p>hello.c  源文件</p>
 
@@ -71,7 +71,7 @@ test -n "$srcdir" || $srcdir=.
 test -n "$NOCONFIGURE" || "$srcdir/configure" "$@"
 </code></pre>
 
-<h3>3. configure.ac解析</h3>
+<h3>configure.ac解析</h3>
 
 <p>configure.ac使用M4宏指令，被Autoconf和Automake读取，Autoconf读取以AC_开始的宏
 Automake读取以AM_开头的宏<br/>
@@ -85,7 +85,7 @@ AC_CONFIG_HEADERS 生成配置头文件<br/>
 AC_CONFIG_FILES 生成的Makefile列表，添加子目录时，要添加相应目标Makefile文件<br/>
 AC_OUTPUT 执行文件生成操作</p>
 
-<h3>4. Automake配置文件Makefile.am解析</h3>
+<h3>Automake配置文件Makefile.am解析</h3>
 
 <p>noinst_PROGRAMS 定义不必安装的目标程序列表<br/>
 bin_PROGRAMS 定义安装的bin目录下的目标程序列表<br/>
