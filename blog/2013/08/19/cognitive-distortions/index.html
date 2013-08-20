@@ -5,12 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>hello world using autotools - 星 如 雨</title>
+  <title>十大认知扭曲 - 星 如 雨</title>
   <meta name="author" content="Crab Nebula">
 
   
-  <meta name="description" content="Hello World Using Autotools Jul 29th, 2013 GNU Autotools断断续续学习了几次，最近一次才找到一 些感觉，觉得算是入了门。
-就从hello world自动生成Makefile开始说起, 参考AutoMake官方手册。 hello项目文件 &hellip;">
+  <meta name="description" content="十大认知扭曲 Aug 19th, 2013 下述十大认知扭曲摘录自《伯恩斯新情绪疗法》，忘记之时查阅。 非此即彼思维 你用非黑即白的思维模式看待整个世界。只要你的表现有一点不完美，你就彻底失败。 以偏概全 在你看来，只要发生一件负面事件，就表示失败会接踵而来，无休无止。 心理过滤 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://crabnebula.github.io/blog/2013/07/29/hello-world-using-autotools">
+  <link rel="canonical" href="http://crabnebula.github.io/blog/2013/08/19/cognitive-distortions">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="星 如 雨" type="application/atom+xml">
@@ -69,7 +68,7 @@
   
   <header>
     
-      <h1 class="entry-title">Hello World Using Autotools</h1>
+      <h1 class="entry-title">十大认知扭曲</h1>
     
     
       <p class="meta">
@@ -85,85 +84,56 @@
   
 
 
-<time datetime="2013-07-29T21:21:00+08:00" pubdate data-updated="true">Jul 29<span>th</span>, 2013</time>
+<time datetime="2013-08-19T23:20:00+08:00" pubdate data-updated="true">Aug 19<span>th</span>, 2013</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>GNU Autotools断断续续学习了几次，最近一次才找到一 些感觉，觉得算是入了门。
-就从hello world自动生成Makefile开始说起, 参考AutoMake官方手册。</p>
+<div class="entry-content"><p>下述十大认知扭曲摘录自《伯恩斯新情绪疗法》，忘记之时查阅。</p>
 
-<h3>hello项目文件</h3>
+<h3>非此即彼思维</h3>
 
-<p>hello.c  源文件</p>
+<p>你用非黑即白的思维模式看待整个世界。只要你的表现有一点不完美，你就彻底失败。</p>
 
-<pre><code>#include &lt;stdio.h&gt;
-#include &lt;config.h&gt;
+<h3>以偏概全</h3>
 
-int main(int argc, char *argv[])
-{
-    puts("hello, autotools");
-    puts("this is " PACKAGE_STRING ".");
-    return 0;
-}
-</code></pre>
+<p>在你看来，只要发生一件负面事件，就表示失败会接踵而来，无休无止。</p>
 
-<p>Makefile.am Automake 配置指令文件</p>
+<h3>心理过滤</h3>
 
-<pre><code>noinst_PROGRAMS=hello
-hello_SOURCES=hello.c
-</code></pre>
+<p>你单单挑出一件负面细节反复回味，最后你眼中的整个现实世界都变得黑暗无光。这就像一滴墨水染黑了一整杯水。</p>
 
-<p>configure.ac Autoconf 配置指令文件</p>
+<h3>否定下面思考</h3>
 
-<pre><code>AC_PREREQ([2.69])
-AC_INIT([hello], [2.0], [email])
-AM_INIT_AUTOMAKE([-Wall -Werror foreign])
-AC_CONFIG_SRCDIR([hello.c])
+<p>你拒绝正面的体验，坚持以这样或者那样的理由暗示自己“它们不算”。虽然这种消极信念有悖于现实体验，但你却以这种方式固执地坚持。</p>
 
-dnl check for programs
-AC_PROG_CC
+<h3>妄下结论</h3>
 
-AC_CONFIG_HEADERS([config.h])
-AC_CONFIG_FILES([
-    Makefile
-])
-AC_OUTPUT
-</code></pre>
+<p>你喜欢用消极的理解方式下结论，即使没有确切的事实有力地证明也如此。
+a. 读心术。如果发现他人的行为不尽如人间，你就认为是针对你的，对此你也懒得去查证。
+b. 先知错误。你觉得事情只会越来越糟，对这一预言你深信不疑。在你看来，它就是铁板钉钉的事实。</p>
 
-<p>autogen.sh configure和Makefile自动生成脚本</p>
+<h3>放大和缩小</h3>
 
-<pre><code>#!/bin/bash
-test -n "$srcdir" || $srcdir=`dirname "$0"`
-test -n "$srcdir" || $srcdir=.
-(
-    cd "$srcdir" &amp;&amp;
-    autoreconf --force -v --install
-) || exit
-test -n "$NOCONFIGURE" || "$srcdir/configure" "$@"
-</code></pre>
+<p>对于你的错误或他人的成就等方面，你往往会夸大它们的重要性。但对于你的优点或他人的缺点等方面，你又会不理智地将它们缩小，把它们看得微不足道。我也将这种模式称为“双目镜把戏”。</p>
 
-<h3>configure.ac解析</h3>
+<h3>情绪化推理</h3>
 
-<p>configure.ac使用M4宏指令，被Autoconf和Automake读取，Autoconf读取以AC_开始的宏
-Automake读取以AM_开头的宏<br/>
-AC_PREREQ 设置Autoconf所需最小版本<br/>
-AC_INIT 设置软件包名字，版本和bug报告地址, 在config.h生成宏定义中<br/>
-AM_INIT_AUTOMAKE 初始化Automake选项，-Wall -Werror与编译器编译选项相同，但与编译器无关。它们告诉
-Automake在执行时打开警告并将警告当作错误处理<br/>
-AC_CONFIG_SRCDIR 检查源文件是否存在<br/>
-AC_PROG_CC 检查编译器，设置CC变量<br/>
-AC_CONFIG_HEADERS 生成配置头文件<br/>
-AC_CONFIG_FILES 生成的Makefile列表，添加子目录时，要添加相应目标Makefile文件<br/>
-AC_OUTPUT 执行文件生成操作</p>
+<p>你认为，只要有负面情绪，就足以证明事实确实非常糟糕，因为你这样想：“我感觉得出来，所以肯定是真的。”</p>
 
-<h3>Automake配置文件Makefile.am解析</h3>
+<h3>应该句式</h3>
 
-<p>noinst_PROGRAMS 定义不必安装的目标程序列表<br/>
-bin_PROGRAMS 定义安装的bin目录下的目标程序列表<br/>
-hello_SOURCES 定义生成hello目标程序所需的源文件</p>
+<p>你习惯于用“我应该做这个”和“我不应该做那个”来鞭策自己，好像你需要被皮鞭抽一顿之后才能好好干活一样。“必须”和“应当”这类句式也会让产生同样的抵触效果。这种句式带来的情绪后果就是内疚。当你把“应该”句式强加于他人时，你会产生愤怒、沮丧甚至仇恨的情绪。</p>
+
+<h3>乱贴标签</h3>
+
+<p>这是一种极端的以偏概全的形式。此时，你不再描述自己的错误，而是给自己贴上消极的标签：“我就是个废物。” 如果有人惹恼了你，你又会给他贴上消极的标签：“他真是个讨厌鬼。” 乱贴标签指的是用高度情绪化、充满感情色彩的语言来描述事物。</p>
+
+<h3>罪责归己</h3>
+
+<p>即使某些外界消极事件你根本不需要负责，但你却认为自己是罪魁祸首。</p>
 </div>
 
 
@@ -189,7 +159,7 @@ hello_SOURCES 定义生成hello目标程序所需的源文件</p>
   
 
 
-<time datetime="2013-07-29T21:21:00+08:00" pubdate data-updated="true">Jul 29<span>th</span>, 2013</time>
+<time datetime="2013-08-19T23:20:00+08:00" pubdate data-updated="true">Aug 19<span>th</span>, 2013</time>
       
 
 
@@ -204,8 +174,8 @@ hello_SOURCES 定义生成hello目标程序所需的源文件</p>
     
     <p class="meta">
       
+        <a class="basic-alignment left" href="/blog/2013/07/29/hello-world-using-autotools/" title="Previous Post: hello world using autotools">&laquo; hello world using autotools</a>
       
-        <a class="basic-alignment right" href="/blog/2013/08/19/cognitive-distortions/" title="Next Post: 十大认知扭曲">十大认知扭曲 &raquo;</a>
       
     </p>
   </footer>
